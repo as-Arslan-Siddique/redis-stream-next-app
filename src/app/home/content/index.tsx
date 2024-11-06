@@ -2,12 +2,12 @@
 import { useEffect, useState } from "react";
 
 const WebSocketComponent = () => {
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState<string[]>([]);
   const [connectionStatus, setConnectionStatus] = useState("Connecting...");
 
   useEffect(() => {
     // Initialize WebSocket connection
-    const socket = new WebSocket("ws://localhost:8000/ws");
+    const socket = new WebSocket("ws://localhost:8080/ws");
 
     // On connection open
     socket.onopen = () => {
@@ -19,7 +19,7 @@ const WebSocketComponent = () => {
     socket.onmessage = (event) => {
       const newMessage = JSON.parse(event.data);
       console.log("New message received:", newMessage);
-      setMessages((prevMessages): any => [...prevMessages, newMessage]);
+      setMessages((prevMessages) => [...prevMessages, newMessage]);
     };
 
     // Handle connection close

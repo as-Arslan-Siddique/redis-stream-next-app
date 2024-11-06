@@ -1,12 +1,5 @@
-import WebSocketComponent from "./home";
+import { redirect } from "next/navigation";
 
-const Home = () => {
-  return (
-    <div>
-      <h1>Real-Time Notifications</h1>
-      <WebSocketComponent />
-    </div>
-  );
-};
-
-export default Home;
+export default function Home() {
+  redirect("/home");
+}
